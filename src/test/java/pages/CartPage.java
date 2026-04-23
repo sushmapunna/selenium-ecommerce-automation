@@ -37,16 +37,13 @@ public class CartPage {
 
     // Click checkout button
     public void clickCheckout() {
-        wait.until(ExpectedConditions.elementToBeClickable(checkoutBtn));
+        try { Thread.sleep(2000); } catch (Exception e) {}
         driver.findElement(checkoutBtn).click();
     }
 
     // Fill shipping details
-    public void fillShippingDetails(String firstName, 
-                                     String lastName, 
-                                     String postal) {
-        wait.until(ExpectedConditions
-                  .visibilityOfElementLocated(firstNameField));
+    public void fillShippingDetails(String firstName, String lastName, String postal) {
+        try { Thread.sleep(2000); } catch (Exception e) {}
         driver.findElement(firstNameField).sendKeys(firstName);
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(postalCodeField).sendKeys(postal);
@@ -54,7 +51,7 @@ public class CartPage {
 
     // Click continue
     public void clickContinue() {
-        wait.until(ExpectedConditions.elementToBeClickable(continueBtn));
+        try { Thread.sleep(2000); } catch (Exception e) {}
         driver.findElement(continueBtn).click();
     }
 
