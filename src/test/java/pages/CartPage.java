@@ -25,46 +25,46 @@ public class CartPage {
     // Constructor
     public CartPage(WebDriver driver) {
         this.driver = driver;
-        // Wait up to 10 seconds for elements to appear
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
     // Get item name in cart
     public String getCartItemName() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(cartItem));
-        return driver.findElement(cartItem).getText();
+        return wait.until(ExpectedConditions
+            .visibilityOfElementLocated(cartItem)).getText();
     }
 
     // Click checkout button
     public void clickCheckout() {
-        try { Thread.sleep(2000); } catch (Exception e) {}
-        driver.findElement(checkoutBtn).click();
+        wait.until(ExpectedConditions
+            .elementToBeClickable(checkoutBtn)).click();
     }
 
     // Fill shipping details
-    public void fillShippingDetails(String firstName, String lastName, String postal) {
-        try { Thread.sleep(2000); } catch (Exception e) {}
-        driver.findElement(firstNameField).sendKeys(firstName);
+    public void fillShippingDetails(String firstName, 
+                                     String lastName, 
+                                     String postal) {
+        wait.until(ExpectedConditions
+            .visibilityOfElementLocated(firstNameField)).sendKeys(firstName);
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(postalCodeField).sendKeys(postal);
     }
 
     // Click continue
     public void clickContinue() {
-        try { Thread.sleep(2000); } catch (Exception e) {}
-        driver.findElement(continueBtn).click();
+        wait.until(ExpectedConditions
+            .elementToBeClickable(continueBtn)).click();
     }
 
     // Click finish
     public void clickFinish() {
-        wait.until(ExpectedConditions.elementToBeClickable(finishBtn));
-        driver.findElement(finishBtn).click();
+        wait.until(ExpectedConditions
+            .elementToBeClickable(finishBtn)).click();
     }
 
-    // Get order confirmation message
+    // Get confirmation message
     public String getConfirmationMessage() {
-        wait.until(ExpectedConditions
-                  .visibilityOfElementLocated(confirmationText));
-        return driver.findElement(confirmationText).getText();
+        return wait.until(ExpectedConditions
+            .visibilityOfElementLocated(confirmationText)).getText();
     }
 }
