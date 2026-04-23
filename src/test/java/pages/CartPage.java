@@ -46,6 +46,7 @@ public class CartPage {
 
     // Click finish
     public void clickFinish() {
+        try { Thread.sleep(2000); } catch (Exception e) {}
         driver.findElement(finishBtn).click();
     }
 
